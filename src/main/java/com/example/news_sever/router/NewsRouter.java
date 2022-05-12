@@ -16,9 +16,7 @@ public class NewsRouter {
     public RouterFunction<ServerResponse> router(NewsHandler newsHandler) {
         return route().nest(path("/news"), builder -> {
             builder.GET("/test",newsHandler::HelloWorld);
-            builder.GET("/name",newsHandler::findByEditor);
-            builder.GET("/all",newsHandler::findAll);
-            builder.GET("/save", newsHandler::save);
+            builder.GET("",newsHandler::findAll);
         }).build();
 
     }

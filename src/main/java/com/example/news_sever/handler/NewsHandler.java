@@ -3,6 +3,8 @@ package com.example.news_sever.handler;
 import com.example.news_sever.model.News;
 import com.example.news_sever.service.NewsService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -21,27 +23,18 @@ public class NewsHandler {
                 .body(Mono.just("Hello New!"), String.class);
     }
 
-    public Mono<ServerResponse> findByEditor(ServerRequest request) {
-        Mono<News> news = newsService.findByEditor("조은지")
-                .log();
-
-        return ServerResponse.ok()
-                .body(news, News.class);
-    }
-
     public Mono<ServerResponse> findAll(ServerRequest request) {
-        Flux<News> news = newsService.findAll()
-                .log();
+        String page = request.queryParam("page").orElse("0");
+        String size = request.queryParam("size").orElse("20");
+        String keyword = request.queryParam("keyword").orElse("");
+        Pageable paging = PageRequest.of(Integer.parseInt(page), Integer.parseInt(size));
+
+        Flux<News> news = newsService.findAllByTitleContainsOrderByCreatedAtDesc(keyword, paging);
 
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(news, News.class);
     }
 
-    public Mono<ServerResponse> save(ServerRequest serverRequest) {
-        Mono<News> save = newsService.save(new News(null, "test", "test", "test", "test", "test", "test"));
 
-        return ServerResponse.ok()
-                .body(save, News.class);
-    }
 }
