@@ -80,7 +80,7 @@ jobs:
         --application-name coinTalk-news \
         --deployment-group-name coin-news-group \
         --file-exists-behavior OVERWRITE \
-        --s3-location bucket=cointalk-deploy,bundleType=zip,key=coinTalk_news.zip \
+        --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=coinTalk_news.zip \
         --region ap-northeast-2
 
 
