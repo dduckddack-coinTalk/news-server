@@ -1,6 +1,6 @@
-package com.example.news_sever.router;
+package com.example.news_server.router;
 
-import com.example.news_sever.handler.NewsHandler;
+import com.example.news_server.handler.NewsHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.server.RouterFunction;

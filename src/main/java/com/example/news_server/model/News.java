@@ -1,4 +1,4 @@
-package com.example.news_sever.model;
+package com.example.news_server.model;
 
 
 import lombok.AllArgsConstructor;

@@ -1,9 +1,8 @@
-package com.example.news_sever.service;
+package com.example.news_server.service;
 
-import com.example.news_sever.model.News;
-import com.example.news_sever.repository.NewsRepository;
+import com.example.news_server.model.News;
+import com.example.news_server.repository.NewsRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;

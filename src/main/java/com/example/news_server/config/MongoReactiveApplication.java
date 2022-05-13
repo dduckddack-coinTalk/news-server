@@ -1,4 +1,4 @@
-package com.example.news_sever.config;
+package com.example.news_server.config;
 
 import com.mongodb.reactivestreams.client.MongoClient;
 import com.mongodb.reactivestreams.client.MongoClients;

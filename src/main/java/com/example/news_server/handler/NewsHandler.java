@@ -1,7 +1,7 @@
-package com.example.news_sever.handler;
+package com.example.news_server.handler;
 
-import com.example.news_sever.model.News;
-import com.example.news_sever.service.NewsService;
+import com.example.news_server.model.News;
+import com.example.news_server.service.NewsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
