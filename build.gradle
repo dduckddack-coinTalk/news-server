@@ -16,12 +16,6 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
 
-//    implementation 'org.mongodb:mongodb-driver-reactivestreams'
-//    implementation 'org.springframework.data:spring-data-mongodb'
-
-//    runtimeOnly 'io.r2dbc:r2dbc-postgresql'
-//    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
-
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
