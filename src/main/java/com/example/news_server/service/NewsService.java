@@ -19,7 +19,10 @@ public class NewsService {
         return newsRepository.findAllByTitleContainsOrderByCreatedAtDesc(keyword, pageable)
                 .collectList()
                 .zipWith(newsRepository.countByTitleContainsOrderByCreatedAtDesc(keyword))
-                .map(t -> new PageResult<News>(t.getT2(),t.getT2(),  t.getT1()));
+                .map(t -> {
+                    long lastPage = (t.getT2()%pageable.getPageSize()>0) ? 1 : 0;
+                    return new PageResult<News>(t.getT2(), t.getT2()/pageable.getPageSize() + lastPage , t.getT1());
+                });
 
 
     }
