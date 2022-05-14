@@ -1,6 +1,8 @@
 package com.example.news_server.handler;
 
+import com.example.news_server.model.GeneralResponse;
 import com.example.news_server.model.News;
+import com.example.news_server.model.PageResult;
 import com.example.news_server.service.NewsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -32,11 +34,13 @@ public class NewsHandler {
         String keyword = request.queryParam("keyword").orElse("");
         Pageable paging = PageRequest.of(Integer.parseInt(page), Integer.parseInt(size));
 
-        Mono<PageImpl> news = newsService.findAllByTitleContainsOrderByCreatedAtDesc(keyword, paging);
+        Mono<GeneralResponse<PageResult<News>>> news = newsService.getPageableNewsByKeyword(keyword, paging)
+                .map(m -> new GeneralResponse<>("ok", m));
+
 
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(news, News.class);
+                .body(news, GeneralResponse.class);
 
     }
 
