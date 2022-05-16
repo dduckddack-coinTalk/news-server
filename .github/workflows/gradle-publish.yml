@@ -30,6 +30,9 @@ jobs:
         echo spring.data.mongodb.username=${{ secrets.MONGODB_USER }} >> ./src/main/resources/application-prod.properties
         echo spring.data.mongodb.database=${{ secrets.MONGODB_DATABASE }} >> ./src/main/resources/application-prod.properties
         echo spring.data.mongodb.authentication-database=${{ secrets.MONGODB_AUTH }} >> ./src/main/resources/application-prod.properties
+        echo spring.kafka.bootstrap-servers=${{ secrets.KAFKA_SERVER }} >> ./src/main/resources/application-prod.properties
+        echo spring.kafka.consumer.group-id=${{ secrets.KAFKA_GROUP_ID }} >> ./src/main/resources/application-prod.properties
+
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
